@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  #-t <docker username>/<github repo>  (the good naming convention, not compulsory)
+  - docker build -t gabrielchong1994/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true gabrielchong1994/docker-react npm run test
